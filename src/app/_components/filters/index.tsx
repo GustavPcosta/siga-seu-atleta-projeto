@@ -5,7 +5,6 @@ import { useDebouncedCallback } from "use-debounce";
 import React, { useState } from "react";
 import DesktopFilters from "./_components/desktop";
 import { Sport } from "@prisma/client";
-import SortBy from "./_components/sortBy";
 import MobileFilters from "./_components/mobile-filters";
 import { useMediaQuery } from "@react-hook/media-query";
 
