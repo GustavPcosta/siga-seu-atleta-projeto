@@ -66,7 +66,7 @@ function SportsFilter({
                   {selectedSport.name}
                 </>
               ) : (
-                <>Todos os esportes</>
+                <>Todos os esportes, escolha</>
               )}
             </Button>
           </PopoverTrigger>
