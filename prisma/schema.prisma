@@ -1,0 +1,43 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["driverAdapters"]
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+
+model Sport {
+  id Int @id @default(autoincrement())
+  code String @unique
+  name String @unique
+  paralympic Boolean
+  athletes Athlete[]
+
+}
+
+
+model Athlete {
+  id Int @id @default(autoincrement())
+  name String
+  sport Sport @relation(fields: [sportId], references: [id])
+  sportId Int
+  paralympic Boolean
+  instagramUrl String?
+  instagramName String?
+  instagramImageUrl String?
+  instagramFollowersCount Int?
+  instagramFollowingCount Int?
+  instagramPostsCount Int?
+  instagramBio String?
+  updatedAt DateTime @default(now())
+
+}
