@@ -4,21 +4,19 @@ import { Suspense } from 'react';
 import Filters from './_components/filters';
 import { findSports } from '../lib/sport';
 
-type PageProps = {
-  
-};
-
+// In Next.js, the searchParams is a part of the props passed to the page component
+// not part of the PageProps type
 export default async function Home({
   searchParams,
 }: {
   searchParams: {
     q?: string;
     category?: 'all' | 'olympic' | 'paralympic';
-    sport?: string; 
-    sort?: "followers" | "name" | "sport"; 
-    dir?: "desc" | "asc"; 
-  };
-} & PageProps) {
+    sport?: string;
+    sort?: "followers" | "name" | "sport";
+    dir?: "desc" | "asc";
+  }
+}) {
   const searchText = searchParams?.q || "";
   const category = searchParams?.category || "all";
   const sport = searchParams?.sport || "";
