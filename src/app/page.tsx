@@ -5,24 +5,22 @@ import Filters from './_components/filters';
 import { findSports } from '../lib/sport';
 
 export default async function Home({
-  searchParams,
+    searchParams,
 }: {
   searchParams: {
     q?: string;
-    category?: 'all' | 'olympic' | 'paralympic';
+    category?: "all" | "olympic" | "paralympic";
     sport?: string;
-    sort?: "followers" | "name" | "sport";
-    dir?: "desc" | "asc";
-  }
+    sort: "followers" | "name" | "sport";
+    dir: "desc" | "asc";
+  };
 }) {
-  // Aguarde o searchParams
-  const params = await searchParams;
+  const searchText = searchParams?.q || "";
+  const category = searchParams?.category || "all";
+  const sport = searchParams?.sport;
 
-  const searchText = params?.q || "";
-  const category = params?.category || "all";
-  const sport = params?.sport || "";
-  const sort = params?.sort || "followers";
-  const dir = params?.dir || "desc";
+  const sort = searchParams?.sort || "followers";
+  const dir = searchParams?.dir || "desc";
   
   const athletes = await findAthletes({
     searchText,
