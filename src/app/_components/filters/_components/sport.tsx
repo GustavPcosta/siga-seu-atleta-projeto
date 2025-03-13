@@ -5,7 +5,6 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 
-
 import {
   Command,
   CommandEmpty,
@@ -14,7 +13,6 @@ import {
   CommandItem,
   CommandList,
 } from "@/components/ui/command";
-
 
 import { useState } from "react";
 import { Sport } from "@prisma/client";
@@ -73,7 +71,7 @@ function SportsFilter({
             </Button>
           </PopoverTrigger>
           <PopoverContent className="p-0" side="top" align="center">
-            <Command>
+            {/* <Command className="w-full">
               <CommandInput placeholder="Pesquisar esporte..." />
               <CommandList>
                 <CommandEmpty>Esporte não encontrado.</CommandEmpty>
@@ -90,7 +88,7 @@ function SportsFilter({
                   ))}
                 </CommandGroup>
               </CommandList>
-            </Command>
+            </Command> */}
           </PopoverContent>
         </Popover>
       </div>
