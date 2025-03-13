@@ -21,14 +21,14 @@ import Image from "next/image";
 function SportsFilter({
   sports,
   sport,
-  onSportChange,
+  // onSportChange,
 }: {
   sports: Sport[];
   sport: string;
   onSportChange: (sport: string) => void;
 }) {
   const [open, setOpen] = useState(false);
-  const [selectedSport, setSelectedSport] = useState<Sport | null>(
+  const [selectedSport] = useState<Sport | null>(
     sports.find((s) => s.code === sport) || null
   );
 
