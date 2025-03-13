@@ -3,7 +3,7 @@ import { Sport } from "@prisma/client"
 import CategoryFilters from "./categories"
 import SportsFilter from "./sport"
 import SortBy from './sortBy'
-import mobileFilters from "./mobile-filters"
+
 interface DesktopFiltersProps{
     category:string,
     onCategoryChange:(selectCategory:string) =>void
@@ -36,7 +36,7 @@ export default function DesktopFilters({category, onCategoryChange, sports,
                 sports={sports} 
                      onSportChange={(selectedSport) => onSportChange(sports.find(s => s.name === selectedSport) ?? { name: selectedSport, id: 0, paralympic: false, code: '' })} 
 />
-                
+
                 <SortBy sort={sort} onSortByChange={onSortByChange} dir={dir} onDirectionChange={onDirectionChange}/>
             </div>
         </div>
