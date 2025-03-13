@@ -3,26 +3,15 @@ import { findAthletes } from '../lib/athlets';
 import { Suspense } from 'react';
 import Filters from './_components/filters';
 import { findSports } from '../lib/sport';
+import { PageProps } from 'next';
 
-// In Next.js, the searchParams is a part of the props passed to the page component
-// not part of the PageProps type
-export default async function Home({
-  searchParams,
-}: {
-  searchParams: {
-    q?: string;
-    category?: 'all' | 'olympic' | 'paralympic';
-    sport?: string;
-    sort?: "followers" | "name" | "sport";
-    dir?: "desc" | "asc";
-  }
-}) {
+export default async function Home({ searchParams }: PageProps) {
   const searchText = searchParams?.q || "";
   const category = searchParams?.category || "all";
   const sport = searchParams?.sport || "";
   const sort = searchParams?.sort || "followers";
   const dir = searchParams?.dir || "desc";
-  
+
   const athletes = await findAthletes({
     searchText,
     category,
@@ -30,9 +19,9 @@ export default async function Home({
     sort,
     dir
   });
-  
+
   const sports = await findSports();
-  
+
   return (
     <main className="p-4 flex flex-col gap-12">
       <Filters sports={sports} />
