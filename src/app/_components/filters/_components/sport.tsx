@@ -32,20 +32,20 @@ function SportsFilter({
     sports.find((s) => s.code === sport) || null
   );
 
-  const handleChange = (name: string) => {
-    if (name === selectedSport?.name) {
-      setSelectedSport(null);
-      setOpen(false);
-      onSportChange("");
-      return;
-    }
+  // const handleChange = (name: string) => {
+  //   if (name === selectedSport?.name) {
+  //     setSelectedSport(null);
+  //     setOpen(false);
+  //     onSportChange("");
+  //     return;
+  //   }
 
-    const selected = sports.find((sport) => sport.name === name) || null;
+  //   const selected = sports.find((sport) => sport.name === name) || null;
 
-    setSelectedSport(selected);
-    setOpen(false);
-    onSportChange(selected?.code || "");
-  };
+  //   setSelectedSport(selected);
+  //   setOpen(false);
+  //   onSportChange(selected?.code || "");
+  // };
 
   return (
     <div className="flex md:flex-row flex-col items-center gap-1">
