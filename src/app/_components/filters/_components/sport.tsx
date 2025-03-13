@@ -5,14 +5,14 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 
-// import {
-//   Command,
-//   CommandEmpty,
-//   CommandGroup,
-//   CommandInput,
-//   CommandItem,
-//   CommandList,
-// } from "@/components/ui/command";
+import {
+  Command,
+  CommandEmpty,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+  CommandList,
+} from "@/components/ui/command";
 
 import { useState } from "react";
 import { Sport } from "@prisma/client";
@@ -21,31 +21,31 @@ import Image from "next/image";
 function SportsFilter({
   sports,
   sport,
-  // onSportChange,
+  onSportChange,
 }: {
   sports: Sport[];
   sport: string;
   onSportChange: (sport: string) => void;
 }) {
   const [open, setOpen] = useState(false);
-  const [selectedSport] = useState<Sport | null>(
+  const [selectedSport, setSelectedSport] = useState<Sport | null>(
     sports.find((s) => s.code === sport) || null
   );
 
-  // const handleChange = (name: string) => {
-  //   if (name === selectedSport?.name) {
-  //     setSelectedSport(null);
-  //     setOpen(false);
-  //     onSportChange("");
-  //     return;
-  //   }
+  const handleChange = (name: string) => {
+    if (name === selectedSport?.name) {
+      setSelectedSport(null);
+      setOpen(false);
+      onSportChange("");
+      return;
+    }
 
-  //   const selected = sports.find((sport) => sport.name === name) || null;
+    const selected = sports.find((sport) => sport.name === name) || null;
 
-  //   setSelectedSport(selected);
-  //   setOpen(false);
-  //   onSportChange(selected?.code || "");
-  // };
+    setSelectedSport(selected);
+    setOpen(false);
+    onSportChange(selected?.code || "");
+  };
 
   return (
     <div className="flex md:flex-row flex-col items-center gap-1">
@@ -66,12 +66,12 @@ function SportsFilter({
                   {selectedSport.name}
                 </>
               ) : (
-                <>Todos os esportes, escolha</>
+                <>Todos os esportes</>
               )}
             </Button>
           </PopoverTrigger>
           <PopoverContent className="p-0" side="top" align="center">
-            {/* <Command className="w-full">
+            <Command className="w-full">
               <CommandInput placeholder="Pesquisar esporte..." />
               <CommandList>
                 <CommandEmpty>Esporte não encontrado.</CommandEmpty>
@@ -88,7 +88,7 @@ function SportsFilter({
                   ))}
                 </CommandGroup>
               </CommandList>
-            </Command> */}
+            </Command>
           </PopoverContent>
         </Popover>
       </div>
